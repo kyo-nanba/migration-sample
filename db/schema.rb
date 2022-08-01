@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_01_053148) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_01_053632) do
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_053148) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "fk_rails_f5aed666f1"
-    t.index ["user_id"], name: "fk_rails_8c4dddfe20"
+    t.index ["user_id", "company_id"], name: "index_user_companies_on_user_id_and_company_id", unique: true
   end
 
   create_table "user_tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
