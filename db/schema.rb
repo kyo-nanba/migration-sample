@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_01_052752) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_01_053148) do
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -26,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_052752) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "fk_rails_f5aed666f1"
+    t.index ["user_id"], name: "fk_rails_8c4dddfe20"
   end
 
   create_table "user_tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -43,6 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_052752) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_companies", "companies"
+  add_foreign_key "user_companies", "users"
   add_foreign_key "user_tasks", "tasks"
   add_foreign_key "user_tasks", "users"
 end
